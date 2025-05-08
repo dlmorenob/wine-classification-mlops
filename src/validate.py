@@ -27,9 +27,6 @@ y = datos["quality"].apply(lambda x: 1 if x >= 7 else 0)
 # partiendo el dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-workspace_dir = os.getcwd() 
-mlruns_dir = os.path.join(workspace_dir, "mlruns")
-
 # MLflow local
 # --- Cargar modelo desde MLflow ---
 print("--- Debug: Cargando modelo desde MLflow ---")
