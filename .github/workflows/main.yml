@@ -1,0 +1,13 @@
+name: Proyecto final  - MLFLOW - GITHUB ACTIONS 
+
+on:
+   push:
+    branches: [main]
+
+jobs:
+    ml_pipeline:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Clonar Repositorio
+              uses:
