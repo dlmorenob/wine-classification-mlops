@@ -1,0 +1,1 @@
+print("Entra a archivo de entrenamiento")
