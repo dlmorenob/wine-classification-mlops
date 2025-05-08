@@ -68,9 +68,6 @@ if experiment_id is None:
     print(f"--- ERROR FATAL: No se pudo obtener un ID de experimento válido para '{experiment_name}'. ---")
     sys.exit(1)
 
-# Infer signature & log with input example
-signature = infer_signature(X_train, model.predict(X_train))
-input_example = X_train[0:1]  # Example: first row
 
 with mlflow.start_run():
     # registro de hiper parametros
@@ -85,6 +82,7 @@ with mlflow.start_run():
     model = RandomForestClassifier(**params)
     model.fit(X_train, y_train)
 
+
     # Predict and log metrics
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
@@ -97,9 +95,12 @@ with mlflow.start_run():
 
     print(f"Precisión: {accuracy} - f1 score: {f1}")
 
+    # Infer signature & log with input example
+    signature = infer_signature(X_train, model.predict(X_train))
+    input_example = X_train[0:1] 
+
     #ahora registramos el modelo 
     #mlflow.sklearn.log_model(model, "modelo_random_forest")
-
     mlflow.sklearn.log_model(
              sk_model=model
             ,artifact_path="model"
