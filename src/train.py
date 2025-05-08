@@ -14,7 +14,7 @@ import numpy as np
 import traceback
 
 
-os.removedirs("mlruns", exist_ok=True) 
+os.removedirs("mlruns") 
 os.makedirs("mlruns", exist_ok=True) 
 
 ### carga los datos
