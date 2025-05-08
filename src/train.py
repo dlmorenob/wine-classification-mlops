@@ -7,6 +7,7 @@ import mlflow
 import mlflow.sklearn
 from sklearn.metrics import accuracy_score, f1_score
 import joblib
+import os
 
 ### carga los datos
 datos = pd.read_csv("data/raw/winequality-red.csv", sep=";")
@@ -18,11 +19,15 @@ y = datos["quality"].apply(lambda x: 1 if x >= 7 else 0)
 # partiendo el dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# MLflow local
-mlflow.set_tracking_uri("http://127.0.0.1:8089")  
+workspace_dir = os.getcwd() 
+mlruns_dir = os.path.join(workspace_dir, "mlruns")
 
-# MLflow remoto
-#mlflow.set_tracking_uri()  
+# MLflow local
+#tracking_uri = "http://127.0.0.1:8089"  
+## MLflow remoto
+tracking_uri = "file://" + os.path.abspath(mlruns_dir)
+
+mlflow.set_tracking_uri(tracking_uri)  
 
 mlflow.set_experiment("Clasificacion de vino rojo")
 
