@@ -47,7 +47,7 @@ try:
     
     run_id = runs.iloc[0].run_id
 
-    model_uri = f"runs:/{run_id}/model"
+    model_uri = f"runs:/{run_id}/modelo_random_forest"
     print(f"--- Debug: Cargando modelo desde URI: {model_uri} ---")
     
     model = mlflow.sklearn.load_model(model_uri)
