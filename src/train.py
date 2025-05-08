@@ -14,9 +14,9 @@ import numpy as np
 import traceback
 
 
-os.removedirs("mlruns") 
-os.makedirs("mlruns", exist_ok=True) 
+#os.removedirs("mlruns") 
 
+os.makedirs("mlruns", exist_ok=True) 
 ### carga los datos
 datos = pd.read_csv("data/raw/winequality-red.csv", sep=";")
 X = datos.drop("quality", axis=1)
