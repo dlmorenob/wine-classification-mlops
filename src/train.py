@@ -36,8 +36,10 @@ mlruns_dir = os.path.join(workspace_dir, "mlruns")
 tracking_uri = "file://" + os.path.abspath(mlruns_dir)
 artifact_location = "file://" + os.path.abspath(mlruns_dir)
 
-mlflow.set_tracking_uri(tracking_uri)  
+print(f"tracking_uri {tracking_uri}")
+print(f"artifact_location {artifact_location}")
 
+mlflow.set_tracking_uri(tracking_uri)  
 experiment_name = "Clasificacion-vino"
 experiment_id = None # Inicializar variable
 
