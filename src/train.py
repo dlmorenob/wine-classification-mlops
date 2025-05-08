@@ -36,7 +36,7 @@ mlflow.set_tracking_uri(tracking_uri)
 
 experiment_name = "Clasificacion-de-vino-rojo"
 experiment_id = None # Inicializar variable
-mlflow.set_experiment(experiment_name)
+#mlflow.set_experiment(experiment_name)
 
 try:
     # Intentar crear el experimento, proporcionando la ubicación del artefacto
@@ -98,16 +98,16 @@ with mlflow.start_run():
     print(f"Precisión: {accuracy} - f1 score: {f1}")
 
     # Infer signature & log with input example
-    signature = infer_signature(X_train, model.predict(X_train))
-    input_example = X_train[0:1] 
+    #signature = infer_signature(X_train, model.predict(X_train))
+    #input_example = X_train[0:1] 
 
     #ahora registramos el modelo 
     #mlflow.sklearn.log_model(model, "modelo_random_forest")
     mlflow.sklearn.log_model(
              sk_model=model
             ,artifact_path="model"
-            ,signature = infer_signature(X_train, model.predict(X_train))
-            ,input_example =input_example 
+            #,signature = infer_signature(X_train, model.predict(X_train))
+            #,input_example =input_example 
     )
 
     # Guardando el modelo localmente
