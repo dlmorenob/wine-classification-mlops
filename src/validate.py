@@ -33,7 +33,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 print("--- Debug: Cargando modelo desde MLflow ---")
 
 try:
-    experiment_name = "Clasificacion-de-vino-rojo"
+    experiment_name = "Clasificacion-vino"
     experiment = mlflow.get_experiment_by_name(experiment_name)
     
     if experiment is None:
