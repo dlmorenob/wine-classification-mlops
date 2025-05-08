@@ -9,6 +9,7 @@ from sklearn.metrics import accuracy_score, f1_score
 import joblib
 import os
 import sys
+from mlflow.models import infer_signature
 
 ### carga los datos
 datos = pd.read_csv("data/raw/winequality-red.csv", sep=";")
@@ -67,6 +68,9 @@ if experiment_id is None:
     print(f"--- ERROR FATAL: No se pudo obtener un ID de experimento válido para '{experiment_name}'. ---")
     sys.exit(1)
 
+# Infer signature & log with input example
+signature = infer_signature(X_train, model.predict(X_train))
+input_example = X_train[0:1]  # Example: first row
 
 with mlflow.start_run():
     # registro de hiper parametros
@@ -94,7 +98,14 @@ with mlflow.start_run():
     print(f"Precisión: {accuracy} - f1 score: {f1}")
 
     #ahora registramos el modelo 
-    mlflow.sklearn.log_model(model, "modelo_random_forest")
+    #mlflow.sklearn.log_model(model, "modelo_random_forest")
+
+    mlflow.sklearn.log_model(
+             sk_model=model
+            ,artifact_path="model"
+            ,signature = infer_signature(X_train, model.predict(X_train))
+            ,input_example =input_example 
+    )
 
     # Guardando el modelo localmente
     joblib.dump(model, "models/model.joblib")
