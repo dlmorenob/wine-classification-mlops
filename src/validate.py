@@ -53,7 +53,7 @@ try:
     print("--- Debug: Modelo cargado exitosamente desde MLflow ---")
 
 except Exception as e:
-    print(f"--- ERROR al cargar modelo desde MLflow: {str(e)} ---")
+    print(f"--- ERROR al cargar modelo desde MLflow: {str(e)} {experiment}---")
     print(f"--- Debug: Archivos en {os.getcwd()}: ---")
     print(os.listdir(os.getcwd()))
     sys.exit(1)
