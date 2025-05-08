@@ -11,6 +11,8 @@ import os
 import sys
 from mlflow.models import infer_signature
 
+os.makedirs("mlruns", exist_ok=True) 
+
 ### carga los datos
 datos = pd.read_csv("data/raw/winequality-red.csv", sep=";")
 X = datos.drop("quality", axis=1)
@@ -21,14 +23,14 @@ y = datos["quality"].apply(lambda x: 1 if x >= 7 else 0)
 # partiendo el dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-workspace_dir = os.getcwd() 
-mlruns_dir = os.path.join(workspace_dir, "mlruns")
+#workspace_dir = os.getcwd() 
+#mlruns_dir = os.path.join(workspace_dir, "mlruns")
 
 # MLflow local
 #tracking_uri = "http://127.0.0.1:8089"  
 ## MLflow remoto
-tracking_uri = "file://" + os.path.abspath(mlruns_dir)
-artifact_location = "file://" + os.path.abspath(mlruns_dir)
+tracking_uri = "file://" + os.path.abspath("mlruns")
+artifact_location = "file://" + os.path.abspath("mlruns")
 
 mlflow.set_tracking_uri(tracking_uri)  
 
