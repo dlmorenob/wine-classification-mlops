@@ -36,7 +36,7 @@ mlflow.set_tracking_uri(tracking_uri)
 
 experiment_name = "Clasificacion-de-vino-rojo"
 experiment_id = None # Inicializar variable
-#mlflow.set_experiment(experiment_name)
+mlflow.set_experiment(experiment_name)
 
 try:
     # Intentar crear el experimento, proporcionando la ubicación del artefacto
