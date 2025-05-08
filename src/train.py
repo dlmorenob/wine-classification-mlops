@@ -102,13 +102,13 @@ with mlflow.start_run():
     #input_example = X_train[0:1] 
 
     #ahora registramos el modelo 
-    #mlflow.sklearn.log_model(model, "modelo_random_forest")
-    mlflow.sklearn.log_model(
-             sk_model=model
-            ,artifact_path="model"
-            #,signature = infer_signature(X_train, model.predict(X_train))
-            #,input_example =input_example 
-    )
+    mlflow.sklearn.log_model(model, "modelo_random_forest")
+    #mlflow.sklearn.log_model(
+    #        sk_model=model
+    #       ,artifact_path="model"
+    #        #,signature = infer_signature(X_train, model.predict(X_train))
+    #        #,input_example =input_example 
+    #)
 
     # Guardando el modelo localmente
     joblib.dump(model, "models/model.joblib")
