@@ -10,11 +10,11 @@ import sys
 THRESHOLD = 0.8
 
 # --- Configurar MLflow igual que en train.py ---
-#workspace_dir = os.getcwd()
-#mlruns_dir = os.path.join(workspace_dir, "mlruns")
-#mlflow.set_tracking_uri("file://" + os.path.abspath(mlruns_dir))
+workspace_dir = os.getcwd()
+mlruns_dir = os.path.join(workspace_dir, "mlruns")
+mlflow.set_tracking_uri("file://" + os.path.abspath(mlruns_dir))
 
-mlflow.set_tracking_uri("file://" + os.path.abspath("mlruns"))
+#mlflow.set_tracking_uri("file://" + os.path.abspath("mlruns"))
 # --- Cargar dataset ---
 print("--- Debug: Cargando dataset categorias Vinos Rojos---")
 
