@@ -55,6 +55,8 @@ with mlflow.start_run():
         "f1_score": f1
     })
 
+    print(f"Precisión: {accuracy} - f1 score: {f1}")
+
     #ahora registramos el modelo 
     mlflow.sklearn.log_model(model, "modelo_random_forest")
 
